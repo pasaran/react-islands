@@ -79,7 +79,7 @@ class Example extends React.Component {
             <div>
                 <div>
                     <Button theme="islands" size="s" onClick={() => this.handlePopup1AnchorClick()}>Toggle popup 1</Button>
-                    <Popup theme="islands" id="p1" visible={this.state.popup1Visible}>
+                    <Popup theme="islands" target="anchor" id="p1" visible={this.state.popup1Visible}>
                         <Link theme="islands" size="s">Yandex</Link>
                     </Popup>
                 </div>
