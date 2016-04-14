@@ -192,36 +192,36 @@ class Popup extends Component {
     }
 
     calcPopupPosition(direction, target, popup) {
-        const res = {};
         const { mainOffset, secondaryOffset } = this.props;
+        let top, left;
 
         if (checkMainDirection(direction, 'bottom')) {
-            res.top = target.top + target.height + mainOffset;
+            top = target.top + target.height + mainOffset;
         } else if (checkMainDirection(direction, 'top')) {
-            res.top = target.top - popup.height - mainOffset;
+            top = target.top - popup.height - mainOffset;
         } else if (checkMainDirection(direction, 'left')) {
-            res.left = target.left - popup.width - mainOffset;
+            left = target.left - popup.width - mainOffset;
         } else if (checkMainDirection(direction, 'right')) {
-            res.left = target.left + target.width + mainOffset;
+            left = target.left + target.width + mainOffset;
         }
 
         if (checkSecondaryDirection(direction, 'right')) {
-            res.left = target.left + target.width - popup.width - secondaryOffset;
+            left = target.left + target.width - popup.width - secondaryOffset;
         } else if (checkSecondaryDirection(direction, 'left')) {
-            res.left = target.left + secondaryOffset;
+            left = target.left + secondaryOffset;
         } else if (checkSecondaryDirection(direction, 'bottom')) {
-            res.top = target.top + target.height - popup.height - secondaryOffset;
+            top = target.top + target.height - popup.height - secondaryOffset;
         } else if (checkSecondaryDirection(direction, 'top')) {
-            res.top = target.top + secondaryOffset;
+            top = target.top + secondaryOffset;
         } else if (checkSecondaryDirection(direction, 'center')) {
             if (checkMainDirection(direction, 'top', 'bottom')) {
-                res.left = target.left + target.width / 2 - popup.width / 2;
+                left = target.left + target.width / 2 - popup.width / 2;
             } else if (checkMainDirection(direction, 'left', 'right')) {
-                res.top = target.top + target.height / 2 - popup.height / 2;
+                top = target.top + target.height / 2 - popup.height / 2;
             }
         }
 
-        return res;
+        return { top, left };
     }
 }
 
